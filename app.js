@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send("السيرفر شغال بنجاح! بانتظار الواجهات من الفريق.");
+    res.send("The server is ready to work!");
 });
 
 app.listen(port, () => {
