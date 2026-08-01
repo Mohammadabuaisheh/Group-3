@@ -7,10 +7,13 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send("The server is ready to work!");
+const indexRoutes = require('./routes/index');
+app.use('/', indexRoutes);
+
+app.use((req, res) => {
+    res.status(404).render('404');
 });
 
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`SafePaws server running on http://localhost:${port}`);
 });
