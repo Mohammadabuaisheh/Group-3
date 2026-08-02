@@ -1,9 +1,26 @@
 <%- include('./partials/header') %>
 <%- include('./partials/nav') %>
 
-<div class="container mt-5">
-    <h1>Welcome to SafePaws</h1>
-    <p>This is the home page.</p>
+<div class="container my-5 text-center">
+  <div class="p-5 mb-5 bg-light rounded-3 border shadow-sm">
+    <h1 class="display-5 fw-bold text-dark mb-3">Welcome to SafePaws 🐾</h1>
+    <p class="fs-5 text-muted col-md-10 mx-auto">
+      A comprehensive web platform dedicated to building an active and inclusive community for animal care and protection.
+    </p>
+    <a href="/about" class="btn btn-primary btn-lg fw-bold mt-2">Learn More About Us</a>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-md-8 mx-auto text-start">
+      <h3 class="fw-bold text-dark border-bottom pb-2">The Problem We Address</h3>
+      <p class="text-secondary fs-5 lh-lg">
+        Homeless, injured, or stray animals often lack access to timely medical care and proper shelter. Fragmented efforts across different shelters make it difficult for rescue centers to find adopting families or secure urgent donations. 
+      </p>
+      <p class="text-secondary fs-5 lh-lg">
+        <strong>SafePaws</strong> unifies animal lovers, shelters, and donors into a single platform—providing a reliable place for pet adoption, quick reporting of lost or injured animals, and a transparent channel for medical donations.
+      </p>
+    </div>
+  </div>
 </div>
 
 <%- include('./partials/footer') %>
