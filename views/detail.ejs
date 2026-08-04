@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pet Details - SafePaws</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<%- include('partials/nav') %>
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
 
 <div class="container my-5">
   <% if (typeof pet !== 'undefined' && pet) { %>
-    <!-- Title Section -->
-    <div class="row mb-4">
+       <div class="row mb-4">
       <div class="col-md-10 mx-auto text-start">
         <h2 class="fw-bold text-dark"><%= pet.name %> Details</h2>
         <hr>
       </div>
     </div>
 
-    <!-- Details Card -->
+    
     <div class="row g-4 col-md-10 mx-auto">
       <div class="col-md-5">
         <img src="<%= pet.image || 'https://via.placeholder.com/400x350' %>" class="img-fluid rounded shadow-sm border w-100 object-fit-cover" style="max-height: 380px;" alt="<%= pet.name %>">
@@ -63,7 +56,7 @@
       </div>
     </div>
   <% } else { %>
-    <!-- Fallback if no pet is selected -->
+    
     <div class="row my-5">
       <div class="col-md-10 mx-auto text-center py-5 rounded border shadow-sm bg-light">
         <h3 class="fw-bold text-dark">No Pet Details Available</h3>
@@ -79,6 +72,4 @@
     </div>
   </div>
 </div>
-
-</body>
-</html>
+<%- include('./partials/footer') %>

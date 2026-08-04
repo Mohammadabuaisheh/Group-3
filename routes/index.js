@@ -10,7 +10,22 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/features', (req, res) => {
-    res.render('features');
+    const safePawsServices = [
+        { 
+            name: 'Adoption', 
+            description: 'Providing a reliable environment that allows users to browse animal details to easily find them a suitable shelter.' 
+        },
+        { 
+            name: 'Reporting', 
+            description: 'A rapid reporting system for lost animals or those requiring urgent medical intervention.' 
+        },
+        { 
+            name: 'Donation', 
+            description: 'A transparent channel to collect financial support to cover the costs of medical treatment and care.' 
+        }
+    ];
+
+    res.render('features', { services: safePawsServices });
 });
 
 router.get('/contact', (req, res) => {
