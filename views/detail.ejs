@@ -1,0 +1,75 @@
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
+
+<div class="container my-5">
+  <% if (typeof pet !== 'undefined' && pet) { %>
+       <div class="row mb-4">
+      <div class="col-md-10 mx-auto text-start">
+        <h2 class="fw-bold text-dark"><%= pet.name %> Details</h2>
+        <hr>
+      </div>
+    </div>
+
+    
+    <div class="row g-4 col-md-10 mx-auto">
+      <div class="col-md-5">
+        <img src="<%= pet.image || 'https://via.placeholder.com/400x350' %>" class="img-fluid rounded shadow-sm border w-100 object-fit-cover" style="max-height: 380px;" alt="<%= pet.name %>">
+      </div>
+
+      <div class="col-md-7">
+        <div class="card border shadow-sm rounded p-4 h-100">
+          <h3 class="fw-bold text-dark mb-3"><%= pet.name %></h3>
+          
+          <div class="row mb-3">
+            <div class="col-6">
+              <span class="text-muted d-block fs-6">Type</span>
+              <span class="fw-semibold text-dark fs-5"><%= pet.type %></span>
+            </div>
+            <div class="col-6">
+              <span class="text-muted d-block fs-6">Breed</span>
+              <span class="fw-semibold text-dark fs-5"><%= pet.breed %></span>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-6">
+              <span class="text-muted d-block fs-6">Age</span>
+              <span class="fw-semibold text-dark fs-5"><%= pet.age %></span>
+            </div>
+            <div class="col-6">
+              <span class="text-muted d-block fs-6">Gender</span>
+              <span class="fw-semibold text-dark fs-5"><%= pet.gender %></span>
+            </div>
+          </div>
+
+          <hr>
+
+          <h5 class="fw-bold text-dark mb-2">About</h5>
+          <p class="fs-6 text-secondary lh-base">
+            <%= pet.description || 'No additional description provided for this pet.' %>
+          </p>
+
+          <div class="mt-auto pt-3">
+            <button class="btn btn-dark w-100 py-2 fw-bold">Adopt <%= pet.name %></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } else { %>
+    
+    <div class="row my-5">
+      <div class="col-md-10 mx-auto text-center py-5 rounded border shadow-sm bg-light">
+        <h3 class="fw-bold text-dark">No Pet Details Available</h3>
+        <p class="text-secondary fs-5">Please select a valid pet profile to view detailed information.</p>
+        <a href="/" class="btn btn-dark mt-2 fw-bold">Return to Home Page</a>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="row mt-4">
+    <div class="col-md-10 mx-auto">
+      <a href="/" class="btn btn-link text-decoration-none p-0 text-secondary">← Back Home</a>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer') %>
