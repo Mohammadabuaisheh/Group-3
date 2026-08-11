@@ -20,9 +20,14 @@
   },
   "homepage": "https://github.com/Mohammadabuaisheh/Group-3#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^2.3.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
     "mongodb": "^7.5.0",
     "mongoose": "^9.9.1",
     "mongose": "^0.0.2-security"
