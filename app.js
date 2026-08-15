@@ -23,10 +23,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-
+const authRoutes = require("./routes/auth");
 const indexRoutes = require("./routes/index");
 app.use('/', indexRoutes);
-
+app.use('/', authRoutes);
 app.all("/*splat", (req, res) => {
     res.status(404).render('404');
 });
