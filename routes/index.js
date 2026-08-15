@@ -23,4 +23,15 @@ router.get('/animal/:id', (req, res) => {
     res.render('detail', {id: animalId});
 });
 
+router.get('/report-animal', (req, res) => {
+    res.render('report-animal');
+});
+
+router.get('/my-reports', (req, res) => {
+    res.render('my-reports', { reports: [] });
+});
+
+
+
+
 module.exports = router;
