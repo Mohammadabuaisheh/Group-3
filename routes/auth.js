@@ -99,6 +99,12 @@ router.post(
       });
     }
 
+    req.session.user={
+      id:user.id,
+      name:user.name,
+      email:user.email
+    };
+
     res.redirect('/');
   }
 );
