@@ -1,0 +1,53 @@
+[33mcommit 8c356d82bc5150bb6bc2b3cea3cd791fe1e254d2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Mohammadabuaisheh <mohammadabuaisheh05@gmail.com>
+Date:   Mon Aug 3 20:07:28 2026 +0300
+
+    Upadte app.js integrate slide requirements
+
+[33mcommit a7fe270ccc2dc4727740418fa7d1ca741543b65c[m
+Author: abedalrahmansbaih <abedalrahmansbaih@gmail.com>
+Date:   Sun Aug 2 21:47:47 2026 +0300
+
+    Home page and about page are done
+
+[33mcommit 787f91b69233dba048aeb5e4c27a32ba5703a648[m
+Author: ajajnoorhan-1267 <ajajnoorhan@gmail.com>
+Date:   Sun Aug 2 20:27:14 2026 +0300
+
+    added header, navbar and footer partials
+
+[33mcommit a52748b2e12c56aeae62d70fe38af0bc59d5c9d4[m
+Author: Mohammadabuaisheh <mohammadabuaisheh05@gmail.com>
+Date:   Sun Aug 2 18:21:07 2026 +0300
+
+    Add mongodb and mongoose dependencies for Phase 2
+
+[33mcommit cefd1b68959bebf9fc3e5a9f3ac337f1dcdc8c15[m
+Author: Mohammadabuaisheh <mohammadabuaisheh05@gmail.com>
+Date:   Sat Aug 1 17:09:00 2026 +0300
+
+    Complete core setup: app.js, routes, and package configuration
+
+[33mcommit 010cbbc7ea1585736432a501ca65b7833fb19972[m
+Author: Mohammadabuaisheh <mohammadabuaisheh05@gmail.com>
+Date:   Thu Jul 30 21:18:15 2026 +0300
+
+    phase One files structure
+
+[33mcommit 3d357b3b4ecaf9d4afe0502c8c9070026b3923b0[m
+Author: Mohammadabuaisheh <mohammadabuaisheh05@gmail.com>
+Date:   Thu Jul 30 13:06:24 2026 +0300
+
+    test
+
+[33mcommit 94f9000e84030fead84ba6abc59980d9984a3b5a[m
+Author: Mohammadabuaisheh <mohammadabuaisheh05@gmail.com>
+Date:   Thu Jul 30 12:17:32 2026 +0300
+
+    The project structure and server file have been prepared
+
+[33mcommit f16470b6314f154a4556df395432113e8b1434ab[m
+Author: Mohammadabuaisheh <156342449+Mohammadabuaisheh@users.noreply.github.com>
+Date:   Thu Jul 30 11:19:11 2026 +0300
+
+    Initial commit

@@ -1,27 +1,12 @@
-const express = require ('express');
+const express = require('express');
 const router = express.Router();
+const indexController = require('../controllers/indexController');
 
-router.get('/', (req, res) => {
-    res.render('home');
-});
-
-router.get('/about', (req, res) => {
-    res.render('about');
-});
-
-router.get('/features', (req, res) => {
-    res.render('features');
-});
-
-router.get('/contact', (req, res) => {
-    res.render('contact'); 
-});
-
-router.get('/animal/:id', (req, res) => {
-    const animalId = req.params.id;
-
-    res.render('detail', {id: animalId});
-});
+router.get('/', indexController.getHome);
+router.get('/about', indexController.getAbout);
+router.get('/features', indexController.getFeatures);
+router.get('/contact', indexController.getContact);
+router.get('/animal/:id', indexController.getAnimalDetails);
 
 router.get('/report-animal', (req, res) => {
     res.render('report-animal');

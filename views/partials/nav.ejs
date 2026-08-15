@@ -1,32 +1,52 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">SafePaws</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand fw-bold" href="/">SafePaws 🐾</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">ِAbout</a>
-        </li>
+        
         
         <li class="nav-item">
-            <a class="nav-link" href="/features">Features</a>
-          
-        </li>
-         <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
-          
+          <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'home' ? 'active fw-bold' : '' %>" href="/">Home</a>
         </li>
 
+        <% if (typeof user !== 'undefined' && user) { %>
+        
+          <li class="nav-item">
+            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'dashboard' ? 'active fw-bold' : '' %>" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'report' ? 'active fw-bold' : '' %>" href="/report">Report Animal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'my-reports' ? 'active fw-bold' : '' %>" href="/my-reports">My Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'search' ? 'active fw-bold' : '' %>" href="/search">Search</a>
+          </li>
+        <% } else { %>
+         
+          <li class="nav-item">
+            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'about' ? 'active fw-bold' : '' %>" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'features' ? 'active fw-bold' : '' %>" href="/features">Features</a>
+          </li>
+        <% } %>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <div class="d-flex">
+        <% if (typeof user !== 'undefined' && user) { %>
+          <a href="/logout" class="btn btn-outline-danger ms-2 fw-bold">Logout</a>
+        <% } else { %>
+          <a href="/login" class="btn btn-outline-light ms-2">Login</a>
+          <a href="/register" class="btn btn-primary ms-2 fw-bold">Register</a>
+        <% } %>
+      </div>
     </div>
   </div>
 </nav>
