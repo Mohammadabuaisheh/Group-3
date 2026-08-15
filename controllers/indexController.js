@@ -1,4 +1,4 @@
-const { act } = require("react");
+
 
 const getHome = (req, res) => {
     res.render('home', {activePage: 'home'});
