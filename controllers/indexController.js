@@ -1,5 +1,7 @@
+const { act } = require("react");
+
 const getHome = (req, res) => {
-    res.render('home');
+    res.render('home', {activePage: 'home'});
 };
 
 const getAbout = (req, res) => {
@@ -11,7 +13,7 @@ const getAbout = (req, res) => {
         { name: 'Yazan', id: '2023105' }
     ];
     
-    res.render('about', { team: projectTeam });
+    res.render('about', { team: projectTeam, activePage: 'about' });
 };
 
 const getFeatures = (req, res) => {
@@ -29,16 +31,16 @@ const getFeatures = (req, res) => {
             description: 'A transparent channel to collect financial support to cover the costs of medical treatment and care.' 
         }
     ];
-    res.render('features', { services: safePawsServices });
+    res.render('features', { services: safePawsServices , activePage: 'features'});
 };
 
 const getContact = (req, res) => {
-    res.render('contact'); 
+    res.render('contact', {activePage: 'contact'}); 
 };
 
 const getAnimalDetails = (req, res) => {
     const animalId = req.params.id;
-    res.render('detail', {id: animalId});
+    res.render('detail', {id: animalId, activePage: 'detail'});
 };
 
 module.exports = {
