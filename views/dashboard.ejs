@@ -1,0 +1,26 @@
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
+
+<div class="container my-5 text-center">
+    <h2 class="fw-bold mb-4">Welcome to your Dashboard, <%= user.name %>! 🐾</h2>
+    <p class="fs-5 text-secondary mb-5">Manage your reports and find animals easily.</p>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4 border-0 rounded-4">
+                <h4 class="fw-bold text-success mb-3">My Reports</h4>
+                <p>View the status of the animals you have reported.</p>
+                <a href="/my-reports" class="btn btn-success">View Reports</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4 border-0 rounded-4">
+                <h4 class="fw-bold text-primary mb-3">Search Animals</h4>
+                <p>Browse our database to find your next pet.</p>
+                <a href="/search" class="btn btn-primary">Search Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

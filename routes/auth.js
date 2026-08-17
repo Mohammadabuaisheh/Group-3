@@ -109,4 +109,17 @@ router.post(
   }
 );
 
+router.get('/dashboard', (req, res) => {
+  if (!req.session.user) {
+    return res.redirect('/login');
+  }
+  res.render('dashboard');
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    res.redirect('/');
+  });
+});
+
 module.exports = router;

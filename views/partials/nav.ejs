@@ -7,46 +7,35 @@
     </button>
     
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        
-        <li class="nav-item">
-          <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'home' ? 'active fw-bold' : '' %>" href="/">Home</a>
-        </li>
-
-        <% if (typeof user !== 'undefined' && user) { %>
-        
-          <li class="nav-item">
-            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'dashboard' ? 'active fw-bold' : '' %>" href="/dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'report' ? 'active fw-bold' : '' %>" href="/report">Report Animal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'my-reports' ? 'active fw-bold' : '' %>" href="/my-reports">My Reports</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'search' ? 'active fw-bold' : '' %>" href="/search">Search</a>
-          </li>
-        <% } else { %>
-         
-          <li class="nav-item">
-            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'about' ? 'active fw-bold' : '' %>" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'features' ? 'active fw-bold' : '' %>" href="/features">Features</a>
-          </li>
-        <% } %>
+    
+      <ul class="navbar-nav me-auto">
+         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+         <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
       </ul>
 
-      <div class="d-flex">
-        <% if (typeof user !== 'undefined' && user) { %>
-          <a href="/logout" class="btn btn-outline-danger ms-2 fw-bold">Logout</a>
+      <ul class="navbar-nav ms-auto align-items-center">
+        <% if (user) { %>
+            <li class="nav-item">
+                <span class="nav-link fw-bold text-light me-3">Hello, <%= user.name %></span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/my-reports">My Reports</a>
+            </li>
+            <li class="nav-item ms-2">
+                <a class="btn btn-outline-danger fw-bold" href="/logout">Logout</a>
+            </li>
         <% } else { %>
-          <a href="/login" class="btn btn-outline-light ms-2">Login</a>
-          <a href="/register" class="btn btn-primary ms-2 fw-bold">Register</a>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item ms-2">
+                <a class="btn btn-primary text-white px-4 rounded-pill fw-bold" href="/register">Register</a>
+            </li>
         <% } %>
-      </div>
+      </ul>
     </div>
   </div>
 </nav>
