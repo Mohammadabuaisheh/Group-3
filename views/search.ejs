@@ -1,0 +1,65 @@
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
+ 
+<div class="container-fluid <%= theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark' %> min-vh-100 py-5">
+    <div class="container">
+       
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <h2 class="fw-bold">🐾 Search Animals</h2>
+                <p class="fs-5 <%= theme === 'dark' ? 'text-light' : 'text-secondary' %>">Find your new best friend.</p>
+            </div>
+            <div class="col-md-4 text-end">
+               
+                <a href="/theme/light" class="btn btn-outline-warning fw-bold shadow-sm <%= theme === 'light' ? 'active' : '' %>">☀️ Light</a>
+                <a href="/theme/dark" class="btn btn-outline-secondary fw-bold shadow-sm <%= theme === 'dark' ? 'active' : '' %>">🌙 Dark</a>
+            </div>
+        </div>
+ 
+                <div class="card shadow-sm border-0 mb-5 <%= theme === 'dark' ? 'bg-secondary text-white' : '' %>">
+            <div class="card-body p-4">
+                <form method="GET" action="/search" class="row g-3 align-items-center">
+                    <div class="col-md-5">
+                        <input type="text" name="search" class="form-control" placeholder="Search pet name..." value="<%= searchQuery %>">
+                    </div>
+                    <div class="col-md-5">
+                        <select name="type" class="form-select">
+                            <option value="">All Types</option>
+                            <option value="dog" <%= searchType === 'dog' ? 'selected' : '' %>>Dogs</option>
+                            <option value="cat" <%= searchType === 'cat' ? 'selected' : '' %>>Cats</option>
+                            <option value="bird" <%= searchType === 'bird' ? 'selected' : '' %>>Birds</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+ 
+                <div class="row g-4">
+            <% if (pets.length > 0) { %>
+                <% pets.forEach(pet => { %>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 <%= theme === 'dark' ? 'bg-secondary text-white' : '' %>">
+                            <div class="card-body text-center p-4">
+                                <h4 class="fw-bold text-primary mb-3"><%= pet.name %></h4>
+                                <p class="mb-1 fs-5"><strong>Type:</strong> <span class="text-capitalize"><%= pet.type %></span></p>
+                                <p class="mb-0 fs-5"><strong>Age:</strong> <%= pet.age %> years</p>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="col-12">
+                    <div class="alert alert-warning text-center fs-5 shadow-sm">
+                        No pets found matching your criteria.
+                    </div>
+                </div>
+            <% } %>
+        </div>
+ 
+    </div>
+</div>
+ 
+<%- include('./partials/footer') %>
