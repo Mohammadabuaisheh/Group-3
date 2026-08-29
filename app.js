@@ -6,6 +6,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const petRoutes = require('./routes/pet');
 
 const app = express();
 const port = 3000;
@@ -53,6 +54,7 @@ app.set('views', path.join(__dirname, 'views'));
 const authRoutes = require("./routes/auth");
 const indexRoutes = require("./routes/index");
 
+app.use('/', petRoutes);
 app.use('/', indexRoutes);
 app.use('/', authRoutes);
 

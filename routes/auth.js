@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.user = {
-            id: user._id,
+            id: user._id.toString(),
             name: user.name,
             email: user.email,
             role: user.role
@@ -85,6 +85,15 @@ router.post('/login', async (req, res) => {
         req.flash('error', 'An error occurred during login. Please try again.');
         res.redirect('/login');
     }
+});
+    router.get('/dashboard', (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
+    res.render('dashboard', {
+        user: req.session.user
+    });
 });
 
 router.get('/logout', (req, res) => {
