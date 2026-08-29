@@ -1,0 +1,86 @@
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
+<div class="container my-5">
+
+    <div class="row mb-4">
+        <div class="col-md-10 mx-auto">
+            <h2 class="fw-bold text-dark">All Pets</h2>
+            <hr>
+            <a href="/pets/create" class="btn btn-success mb-4">
+                ADD new Pet
+            </a>
+            <div class="row g-4">
+            <% if (pets.length === 0) { %>
+                    <div class="col-12">
+                        <div class="alert alert-secondary text-center">
+                            No pets added yet
+                        </div>
+                    </div>
+            <% } else { %>
+                    <% for (let pet of pets) { %>
+
+                        <div class="col-md-4">
+
+                            <div class="card border shadow-sm rounded p-3 h-100">
+
+                                <% if (pet.image) { %>
+                                    <img
+                                        src="<%= pet.image %>"
+                                        class="card-img-top mb-3"
+                                        alt="<%= pet.name %>"
+                                        style="height: 200px; object-fit: cover;"
+                                    >
+                                <%}%>
+
+                                <h4 class="fw-bold text-dark">
+                                    <%= pet.name %>
+                                </h4>
+
+                                <p>
+                                    <strong>Type:</strong>
+                                    <%= pet.type %>
+                                </p>
+
+                                <p>
+                                    <strong>Breed:</strong>
+                                    <%= pet.breed || " Not specified" %>
+                                </p>
+
+                                <p>
+                                    <strong>Age:</strong>
+                                    <%= pet.age || "Not specified" %>
+                                </p>
+
+                                <p>
+                                    <strong>Gender:</strong>
+                                    <%= pet.gender || "Not specified" %>
+                                </p>
+
+
+
+                                <p>
+                                    <strong>Status:</strong>
+                                    <%= pet.status %>
+                                </p>
+
+
+
+
+                                <p>
+                                    <strong>Description:</strong>
+                                    <%= pet.description || "No description" %>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    <%}%>
+
+                <%}%>
+            </div>
+          </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>
