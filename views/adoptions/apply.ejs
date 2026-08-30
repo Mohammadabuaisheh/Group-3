@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm border-0 p-4">
+        <h2 class="fw-bold mb-3">Apply to Adopt <%= pet.name %></h2>
+        <p class="text-secondary mb-4">Complete the adoption application below.</p>
+
+        <% if (error) { %>
+          <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <form action="/adopt/<%= pet._id %>" method="POST">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Applicant Name</label>
+            <input type="text" name="applicantName" class="form-control" value="<%= user.name %>" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Email Address</label>
+            <input type="email" name="applicantEmail" class="form-control" value="<%= user.email %>" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Phone Number</label>
+            <input type="text" name="phone" class="form-control" placeholder="e.g. 079XXXXXXXX" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Housing Type</label>
+            <select name="housingType" class="form-select" required>
+              <option value="">Select housing type</option>
+              <option value="Apartment">Apartment</option>
+              <option value="House">House</option>
+              <option value="Villa">Villa</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Do you own other pets?</label>
+            <select name="hasOtherPets" class="form-select" required>
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Why do you want to adopt <%= pet.name %>?</label>
+            <textarea name="reason" rows="4" class="form-control" placeholder="Provide background on your home and daily schedule..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100 fw-bold py-2">Submit Adoption Application</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

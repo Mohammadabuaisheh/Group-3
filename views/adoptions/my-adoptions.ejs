@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<div class="container my-5">
+  <div class="row mb-4">
+    <div class="col-md-10 mx-auto">
+      <h2 class="fw-bold text-dark">My Adoption Applications</h2>
+      <hr>
+      <p class="fs-5 text-secondary">Track your submitted adoption applications.</p>
+    </div>
+  </div>
+
+  <% if (success) { %>
+    <div class="alert alert-success col-md-10 mx-auto">
+      Adoption application submitted successfully!
+    </div>
+  <% } %>
+
+  <div class="row g-4 col-md-10 mx-auto">
+    <% if (adoptions.length === 0) { %>
+      <div class="col-12">
+        <div class="alert alert-secondary text-center">
+          You haven't submitted any adoption applications yet.
+        </div>
+      </div>
+    <% } else { %>
+      <% adoptions.forEach(item => { %>
+        <div class="col-md-6">
+          <div class="card border shadow-sm rounded p-4 h-100">
+            <h4 class="fw-bold text-dark mb-3"><%= item.petId ? item.petId.name : 'Unknown Pet' %></h4>
+            <p><strong>Status:</strong> 
+              <span class="badge <%= item.status === 'Approved' ? 'bg-success' : item.status === 'Rejected' ? 'bg-danger' : 'bg-warning text-dark' %>">
+                <%= item.status %>
+              </span>
+            </p>
+            <p><strong>Housing:</strong> <%= item.housingType %></p>
+            <p><strong>Has Other Pets:</strong> <%= item.hasOtherPets ? 'Yes' : 'No' %></p>
+            <p><strong>Contact:</strong> <%= item.phone %></p>
+            <p><strong>Reason:</strong> <%= item.reason %></p>
+            <p class="text-muted small">Submitted: <%= new Date(item.createdAt).toLocaleDateString() %></p>
+
+            <% if (item.status === 'Pending') { %>
+              <form action="/adoptions/cancel/<%= item._id %>" method="POST" class="mt-auto">
+                <button type="submit" class="btn btn-outline-danger btn-sm w-100">Cancel Application</button>
+              </form>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
