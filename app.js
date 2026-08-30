@@ -49,13 +49,17 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
  
+// Route Imports
 const authRoutes = require("./routes/auth");
 const indexRoutes = require("./routes/index");
 const petRoutes = require('./routes/pet');
- 
+const adminRoutes = require('./routes/admin'); // Added Admin Routes
+
+// Route Mounts
 app.use('/', indexRoutes);
 app.use('/', authRoutes);
 app.use('/', petRoutes);
+app.use('/', adminRoutes); // Mounted Admin Routes
  
 app.all("/*splat", (req, res) => {
     res.status(404).render('404');

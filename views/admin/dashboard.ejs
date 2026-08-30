@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>👑 Admin Control Panel</h2>
+    <a href="/admin/analytics" class="btn btn-primary">View Analytics</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h4>Recent Registered Users</h4>
+        <ul class="list-group list-group-flush mt-3">
+          <% recentUsers.forEach(u => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= u.name %> (<%= u.email %>)
+              <span class="badge bg-secondary"><%= u.role || 'user' %></span>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h4>Recent Pet Reports</h4>
+        <ul class="list-group list-group-flush mt-3">
+          <% recentReports.forEach(r => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= r.title %>
+              <span class="badge bg-warning text-dark"><%= r.status %></span>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
