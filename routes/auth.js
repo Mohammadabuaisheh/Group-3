@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 
-// --- MIDDLEWARE EXPORT ---
 const isAdmin = (req, res, next) => {
   if (req.session.user && req.session.user.role === 'admin') {
     return next();
@@ -12,15 +11,11 @@ const isAdmin = (req, res, next) => {
   return res.status(403).render('404');
 };
 
-// --- ROUTES ---
-
-// GET Register
 router.get('/register', (req, res) => {
   if (req.session.user) return res.redirect('/');
   res.render('register', { errors: [], oldData: {} });
 });
 
-// POST Register (With express-validator for sticky forms)
 router.post(
   '/register',
   [
@@ -37,7 +32,6 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
 
-    // Sticky Form: Render view with old input data if validation fails
     if (!errors.isEmpty()) {
       return res.status(400).render('register', {
         errors: errors.array(),
@@ -61,7 +55,7 @@ router.post(
         name,
         email,
         password: hashedPassword,
-        role: 'user' // Default user role
+        role: 'user' 
       });
 
       await newUser.save();
@@ -73,13 +67,11 @@ router.post(
   }
 );
 
-// GET Login
 router.get('/login', (req, res) => {
   if (req.session.user) return res.redirect('/');
   res.render('login', { errors: [], oldData: {} });
 });
 
-// POST Login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -107,7 +99,6 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // Session assignment
     req.session.user = {
       id: user._id.toString(),
       name: user.name,
@@ -122,7 +113,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// GET Dashboard
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     return res.redirect('/login');
@@ -133,7 +123,6 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
-// GET Logout
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) console.error('Logout error:', err);
@@ -141,5 +130,5 @@ router.get('/logout', (req, res) => {
   });
 });
 
-// Export Router and Admin Middleware together cleanly
-module.exports = { router, isAdmin };
+router.isAdmin = isAdmin;
+module.exports = router;

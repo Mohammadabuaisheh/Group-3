@@ -43,7 +43,9 @@
                     <div class="col-md-4">
                         <div class="card h-100 shadow-sm border-0 <%= theme === 'dark' ? 'bg-secondary text-white' : '' %>">
                             <div class="card-body text-center p-4">
-                                <h4 class="fw-bold text-primary mb-3"><%= pet.name %></h4>
+                                <h4 class="fw-bold text-primary mb-3">
+                                  <a href="/animal/<%= pet._id %>" class="text-decoration-none text-primary"><%= pet.name %></a>
+                                </h4>
                                 <p class="mb-1 fs-5"><strong>Type:</strong> <span class="text-capitalize"><%= pet.type %></span></p>
                                 <p class="mb-0 fs-5"><strong>Age:</strong> <%= pet.age %> years</p>
                             </div>

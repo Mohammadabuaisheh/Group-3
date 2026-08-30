@@ -1,7 +1,7 @@
-
+const Pet = require('../models/pet');
 
 const getHome = (req, res) => {
-    res.render('home', {activePage: 'home'});
+    res.render('home', { activePage: 'home' });
 };
 
 const getAbout = (req, res) => {
@@ -12,7 +12,6 @@ const getAbout = (req, res) => {
         { name: 'Mahdi', id: '2023104' },
         { name: 'Yazan', id: '2023105' }
     ];
-    
     res.render('about', { team: projectTeam, activePage: 'about' });
 };
 
@@ -31,16 +30,24 @@ const getFeatures = (req, res) => {
             description: 'A transparent channel to collect financial support to cover the costs of medical treatment and care.' 
         }
     ];
-    res.render('features', { services: safePawsServices , activePage: 'features'});
+    res.render('features', { services: safePawsServices, activePage: 'features' });
 };
 
 const getContact = (req, res) => {
-    res.render('contact', {activePage: 'contact'}); 
+    res.render('contact', { activePage: 'contact' }); 
 };
 
-const getAnimalDetails = (req, res) => {
-    const animalId = req.params.id;
-    res.render('detail', {id: animalId, activePage: 'detail'});
+const getAnimalDetails = async (req, res) => {
+    try {
+        const pet = await Pet.findById(req.params.id);
+        if (!pet) {
+            return res.status(404).render('404', { message: 'Animal not found.' });
+        }
+        res.render('detail', { pet, activePage: 'detail' });
+    } catch (err) {
+        console.error('Animal Details Error:', err);
+        res.status(404).render('404', { message: 'Invalid animal ID.' });
+    }
 };
 
 module.exports = {
