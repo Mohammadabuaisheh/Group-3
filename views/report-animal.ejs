@@ -1,122 +1,72 @@
-<%- include('./partials/header')%>
-<%- include('./partials/nav')%>
-    
-    
-    <div class="container my-5">
-        <div class="row mb-4">
-            <h2 class="fw-bold text-dark">Report an animal </h2>
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
+
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col-md-8 mx-auto">
+            <h2 class="fw-bold text-dark">Report an Animal</h2>
             <hr>
             <p class="fs-5 text-secondary">
-                found a lost or injured animal ? report it by providing the details below
+                Found a lost or injured animal? Report it by providing the details below.
             </p>
-
-
         </div>
+    </div>
 
-    
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <div class="card border  shadow-sm rounded p-4">
-                <form action ="/report-animal" method="POST">
-                    <div class ="mb-3">
-                        <label class="form-label fw-semibold">
-                            Animal name(if known)
-
-
-
-                        </label>
-                        <input type="text" name="animalName"  class="form-control"  placeholder="enter animal name if known">
-
-
-
-
-
+            <div class="card border shadow-sm rounded p-4">
+                <form action="/report-animal" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Animal Name (if known)</label>
+                        <input type="text" name="animalName" class="form-control" placeholder="Enter animal name if known">
                     </div>
-                    <div class ="mb-3">
-                        <label class="form-label fw-semibold">
-                            Animal type
 
-
-
-                        </label>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Animal Type</label>
                         <select name="type" class="form-select" required>
-                            <option value="">select animal type</option>
+                            <option value="">Select animal type</option>
                             <option value="Dog">Dog</option>
-                            <option value="cat">cat</option>
+                            <option value="Cat">Cat</option>
                             <option value="Bird">Bird</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
 
-                           <div class ="mb-3">
-                        <label class="form-label fw-semibold">
-                           Status
-
-
-                        </label>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Status</label>
                         <select name="status" class="form-select" required>
-                            <option value="">select status</option>
+                            <option value="">Select status</option>
                             <option value="Lost">Lost</option>
                             <option value="Injured">Injured</option>
-                            
+                            <option value="Found">Found</option>
                         </select>
                     </div>
 
-
-                    <div class ="mb-3">
-                        <label class="form-label fw-semibold">
-                            Behavior
-
-
-
-                        </label>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Behavior</label>
                         <select name="behavior" class="form-select" required>
-                            <option value="">select Behavior</option>
+                            <option value="">Select behavior</option>
                             <option value="Calm">Calm</option>
                             <option value="Scared">Scared</option>
-                            <option value="Aggresive">Aggressive</option>
-
-                            
+                            <option value="Aggressive">Aggressive</option>
                         </select>
                     </div>
 
-                    <div class ="mb-3">
-                        <label class="form-label fw-semibold">
-                            Location
-                        </label>
-                        <input type="text" name="location" class="form-control"  placeholder="Enter the location where the animal was found"required>                        
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Location</label>
+                        <input type="text" name="location" class="form-control" placeholder="Enter location where animal was found" required>
                     </div>
 
-                    <div class ="mb-3">
-                        <label class="form-label fw-semibold">
-                           Description
-                        </label>
-                        <textarea name="description" class="form-control"  placeholder="Describe the animal and its condition  "   required >
-
-
-                        </textarea>
-                                                 
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Description</label>
+                        <textarea name="description" class="form-control" rows="4" placeholder="Describe the animal and its condition" required></textarea>
                     </div>
-                    <button type="submit" class=" btn btn-success w-100 py-2 fw-bold">
-                        Submit Report
 
-                    </button>
-
-                    
-
-
-                    
-
-                    
-
-
-                        
-
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Submit Report</button>
                 </form>
             </div>
         </div>
-
-
-        </div>
     </div>
-    
+</div>
+
 <%- include('./partials/footer') %>

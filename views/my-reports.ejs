@@ -1,105 +1,75 @@
-<%- include('./partials/header')%>
-<%- include('./partials/nav')%>
-    <div class="container my-5">
-        <div class="row mb-4">
-            <h2 class="fw-bold text-dark">My reports</h2>
+<%- include('./partials/header') %>
+<%- include('./partials/nav') %>
+
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col-md-10 mx-auto">
+            <h2 class="fw-bold text-dark">My Reports</h2>
             <hr>
-
             <p class="fs-5 text-secondary">
-                view the animal reports you have submitted
+                View the animal reports you have submitted.
             </p>
-
-
-    </div>
-    <% if (success){ %>
-        <div class="alert alert-success col-md-10 mx auto">
-            report submitted successfuly!!
         </div>
-   
+    </div>
 
-     <% } %>
-    <div class ="row g-4 col-md-10 mx-auto">
+    <% if (success) { %>
+        <div class="alert alert-success col-md-10 mx-auto">
+            Report submitted successfully!
+        </div>
+    <% } %>
+
+    <div class="row g-4 col-md-10 mx-auto">
         <% if (reports.length === 0) { %>
-
             <div class="col-12">
                 <div class="alert alert-secondary text-center">
                     You have not submitted any reports yet.
                 </div>
             </div>
-        <%} else {%>
-            <% for (let report of reports){ %>
+        <% } else { %>
+            <% for (let report of reports) { %>
                 <div class="col-md-6">
-                    <div class="card border shadow-sm rounded p-4 h-100">
-
+                    <div class="card border shadow-sm rounded p-4 h-100 d-flex flex-column">
                         <h4 class="fw-bold text-dark mb-3">
                             <%= report.animalName || "Unknown Animal" %>
                         </h4>
 
                         <p>
-                            <strong>Type:</strong>
-                                <%= report.type %>
-
-                           
+                            <strong>Type:</strong> <%= report.type %>
                         </p>
-                         <p>
-                            <strong>Status:</strong>
+                        <p>
+                            <strong>Status:</strong> 
+                            <span class="badge <%= report.status === 'Injured' ? 'bg-danger' : report.status === 'Lost' ? 'bg-warning text-dark' : 'bg-success' %>">
                                 <%= report.status %>
-
-                            
+                            </span>
                         </p>
- <p>
-                            <strong>Behavior:</strong>
-                                <%= report.behavior|| "not spacified" %>
-
-                            
+                        <p>
+                            <strong>Behavior:</strong> <%= report.behavior || "Not specified" %>
                         </p>
- <p>
-                            <strong>Location:</strong>
-                                <%= report.location %>
-
-                            
+                        <p>
+                            <strong>Location:</strong> <%= report.location %>
                         </p>
-
-                        <p class="mb-0">
-                            <strong>Description</strong>
-                            <%= report.description%>
+                        <p>
+                            <strong>Description:</strong> <%= report.description %>
+                        </p>
+                        <p class="text-muted small">
+                            Submitted: <%= new Date(report.createdAt).toLocaleDateString() %>
                         </p>
 
-
-
-
-
-
+                        <form action="/reports/delete/<%= report._id %>" method="POST" class="mt-auto pt-2">
+                            <button type="submit" class="btn btn-outline-danger btn-sm w-100">Delete Report</button>
+                        </form>
+                    </div>
                 </div>
-
-                </div>
-
-
-
-            <% } %> 
-
-       <% }  %>
-
-
-
-
+            <% } %>
+        <% } %>
     </div>
 
     <div class="row mt-4">
         <div class="col-md-10 mx-auto">
-            <a href="/report-animal" class="btn btn-success">
-                submit new report 
-            </a>
-            <a href="/" class="btn btn-success">
-                Back Home
-            </a>
+            <a href="/report-animal" class="btn btn-success me-2">Submit New Report</a>
+            <a href="/" class="btn btn-secondary">Back Home</a>
         </div>
     </div>
-    </div>
+</div>
 
-    
-  
-    
-
-    
-<%-include('./partials/footer') %>
+<%- include('./partials/footer') %>
